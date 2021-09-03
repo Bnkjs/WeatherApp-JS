@@ -5,8 +5,8 @@ export const Header = (props)=> {
       <header>
         <h1 className="header-title">WeatherNow</h1>
         <p className='header-content'>La méteo? D'accord.. <br />Mais de quelle ville? </p>
+        <SearchBar hook={props.hook} setHook={props.setHook} handleSearch={props.handleSearch} />
       </header>
-      <SearchBar hook={props.hook} setHook={props.setHook} handleSearch={props.handleSearch} />
     </>
   )
 }
