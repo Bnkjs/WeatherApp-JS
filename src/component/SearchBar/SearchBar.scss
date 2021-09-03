@@ -7,13 +7,6 @@
   display: flex;
   width: 100%;
   @include flex-center();
+  margin-top: 2%;
 }
-form{
- .search-input{
-   height: 2.50em;
-   width: 16.5em;
-   outline: none;
-   border: none;
-   border-radius: 0.42em;
- } 
-}
+
