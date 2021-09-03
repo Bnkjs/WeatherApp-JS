@@ -11,6 +11,7 @@ nav{
   background-color: rgb(254, 191, 201);
   left: 0;
   right: 0;
+  top: 0;
   @include flex-center();
   ul{
     margin: 0;
