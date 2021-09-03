@@ -1,3 +1,5 @@
+import { Input } from '../../elements/Input/Input';
+import { Button } from '../../elements/Button/Buton'
 import { useState, useEffect } from "react";
 
 export const SearchBar = () =>{
@@ -5,17 +7,8 @@ export const SearchBar = () =>{
   const onChangeInput = (e) => setInput(e.target.value)
 
   return(<div id='searchBar'>
-     <form id="form-weather">
-       <input 
-        type="text" 
-        name='search-input' 
-        placeholder='Paris, Antalya, Lomé...' 
-        className='search-input' 
-        onChange={onChangeInput}
-        value={input}
-       />
-     </form>
-     <button>Rechercher</button>
+     <Input/>
+     <Button/>
   </div>)
 }
 
