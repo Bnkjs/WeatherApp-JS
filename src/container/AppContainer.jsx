@@ -10,8 +10,9 @@ export const App =() =>{
   const onChangeInput = (e) => setInput(e.target.value)
   const [datas, setDatas] = useState("")
   
-  function handleSearch(){
-    ApiFetch.CurrentWeather(input,process.env.REACT_APP_APIKEY,setDatas)
+  function handleSearch(e){
+    input === ""? e.preventDefault() :
+    ApiFetch.CurrentWeather(input,process.env.REACT_APP_APIKEY,setDatas) 
   }
 
   useEffect(()=>{
