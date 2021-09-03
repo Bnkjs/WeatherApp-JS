@@ -1,5 +1,5 @@
-export const Button = ({handleCLick}) => {
+export const Button = (props) => {
   return(<>
-    <button className="btn-search" onClick={handleCLick}>Rechercher</button>
+    <button className="btn-search" onClick={props.onClick}>Rechercher</button>
   </>)
 }
