@@ -1,5 +1,5 @@
 import './Input.scss'
-export const Input = ({input, onChangeInput}) =>{
+export const Input = (props) =>{
   return(<>
     <form id="form-weather">
        <input 
@@ -7,8 +7,8 @@ export const Input = ({input, onChangeInput}) =>{
         name='search-input' 
         placeholder='Paris, Antalya, Lomé...' 
         className='search-input' 
-        onChange={onChangeInput}
-        value={input}
+        onChange={props.onChangeInput}
+        value={props.input}
        />
      </form>
     </>)
