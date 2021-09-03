@@ -11,12 +11,12 @@ export const App =() =>{
   const [datas, setDatas] = useState("")
   
   function handleSearch(e){
-    input === ""? e.preventDefault() :
+    input === ""? e.preventDefault():
     ApiFetch.CurrentWeather(input,process.env.REACT_APP_APIKEY,setDatas) 
   }
 
   useEffect(()=>{
-    console.log(datas);
+    console.log(datas.main.temp);
   },[datas])
 
   return(
@@ -27,7 +27,7 @@ export const App =() =>{
         setHook={onChangeInput}
         handleSearch={handleSearch} 
        />
-       <WeatherResult/>
+       <WeatherResult city={datas.name} temp={Math.ceil(datas.main.temp)}/>
       </div>
   )
 }
