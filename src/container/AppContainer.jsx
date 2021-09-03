@@ -1,16 +1,14 @@
 import './index.scss';
-import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
-
+import { Navbar } from 'component/NavBar/NavBar';
+import { Header } from 'component/Header/Header';
+import { WeatherResult } from 'component/WeatherResult/WeatherResult';
 export const App =() =>{
 
   return(
       <div id="container-app">
-        <Router>
-          <Switch>
-            <Route exact path="/">
-            </Route>
-          </Switch>
-        </Router>
+        <Navbar/>
+       <Header/>
+       <WeatherResult/>
       </div>
   )
 }
