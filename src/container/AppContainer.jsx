@@ -11,8 +11,12 @@ export const App =() =>{
   const [datas, setDatas] = useState("")
   
   function handleSearch(){
-    console.log(input);
+    ApiFetch.CurrentWeather(input,process.env.REACT_APP_APIKEY,setDatas)
   }
+
+  useEffect(()=>{
+    console.log(datas);
+  },[datas])
 
   return(
       <div id="container-app">
