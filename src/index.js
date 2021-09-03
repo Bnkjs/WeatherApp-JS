@@ -1,6 +1,6 @@
 import react from 'react';
 import { render } from '@testing-library/react';
-import { App } from './AppContainer'
+import { App } from './container/AppContainer'
 
 let rootElement = document.getElementById('root')
 
