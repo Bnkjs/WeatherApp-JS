@@ -1,8 +1,9 @@
-$font-primary:'Montserrat', sans-serif;
+$font-primary:'Raleway', sans-serif;
 body{
   margin: 0;
   padding: 0;
   height: 100vh;
+  font-family: $font-primary;
 }
 
 #container-app{
