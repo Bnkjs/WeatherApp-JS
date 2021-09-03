@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function SearchBar(){
+export const SearchBar = () =>{
   const [input, setInput] = useState('paris')
   const onChangeInput = (e) => setInput(e.target.value)
 
