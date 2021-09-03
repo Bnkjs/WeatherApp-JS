@@ -1,0 +1,27 @@
+$font-Bold: 'Montserrat';
+@mixin flex-center-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+header{
+  width: 100%;
+  height: 50vh;
+  background-color: aquamarine;
+  @include flex-center-column();
+  .header-title,.header-content{
+    margin: 0;
+  }
+  .header-title{
+    position: relative;
+    font-size: 4.50em;
+    font-family: $font-Bold;
+  }
+  .header-content{
+    font-size: 1.50em;
+    font-weight: 300;
+  }
+}
+
+
