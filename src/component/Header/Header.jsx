@@ -1,3 +1,4 @@
+import 'component/Header/Header.scss'
 import { SearchBar } from 'component/SearchBar/SearchBar'
 export const Header = (props)=> {
   return( <>
