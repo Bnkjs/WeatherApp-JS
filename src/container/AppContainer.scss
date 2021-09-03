@@ -1,4 +1,10 @@
 $font-primary:'Raleway', sans-serif;
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 body{
   margin: 0;
   padding: 0;
@@ -7,11 +13,9 @@ body{
 }
 
 #container-app{
-  display: block;
+  @include flex-center();
   width: 800px;
   height: 100vh;
   margin: auto;
   background-color: antiquewhite;
-  margin-top: 5%;
 }
-
