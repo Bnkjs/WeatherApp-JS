@@ -1,0 +1,18 @@
+.btn-search{
+  border: none;
+  padding: 0.7em;
+  border-radius: 0.4em;
+  margin-left: 0.1em;
+  cursor: pointer;
+  background-color: #6A68F7;
+  color: #fff;
+  font-weight: bold;
+  transition: all 100ms ease-in;
+  &:hover{
+    background-color:#fff ;
+    color:#6A68F7;
+  }
+  &:active{
+    transform: scale(1.1);
+  }
+}

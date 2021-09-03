@@ -1,5 +1,5 @@
 import { Input } from '../../elements/Input/Input';
-import { Button } from '../../elements/Button/Buton';
+import { Button } from '../../elements/Button/Button';
 import 'component/SearchBar/SearchBar.scss';
 export const SearchBar = (props) =>{
  
