@@ -3,11 +3,11 @@ import { Button } from '../../elements/Button/Buton'
 import { useState, useEffect } from "react";
 
 export const SearchBar = () =>{
-  const [input, setInput] = useState('paris')
+  const [input, setInput] = useState('')
   const onChangeInput = (e) => setInput(e.target.value)
 
   return(<div id='searchBar'>
-     <Input/>
+     <Input input={input} onChangeInput={onChangeInput}/>
      <Button/>
   </div>)
 }
