@@ -1,0 +1,19 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#searchBar{
+  display: flex;
+  width: 100%;
+  @include flex-center();
+}
+form{
+ .search-input{
+   height: 2.50em;
+   width: 16.5em;
+   outline: none;
+   border: none;
+   border-radius: 0.42em;
+ } 
+}
