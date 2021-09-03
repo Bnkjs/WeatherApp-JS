@@ -1,4 +1,4 @@
-import './index.scss';
+import './AppContainer.scss';
 import { Navbar } from 'component/NavBar/NavBar';
 import { Header } from 'component/Header/Header';
 import { WeatherResult } from 'component/WeatherResult/WeatherResult';
