@@ -1,15 +1,15 @@
 export default {
- CurrentWeather: async function ({input,hook}){
-      await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&units=metric&appid=${process.env.apiKey}`)
+ CurrentWeather: async function (query, apiKey, Hook){
+      await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&appid=${apiKey}`)
       .then(r => r.json())
-      .then(hook())
+      .then(r => {Hook(r)})
       .catch(error => console.log(error))
     },
 
-    ForceastFourDaysWeather: async function ({input,hook}){
-      await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${input}&units=metric&appid=${process.env.apiKey}`)
+    ForceastFourDaysWeather: async function (query, apiKey, Hook){
+      await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${query}&units=metric&appid=${apiKey}`)
       .then(r => r.json())
-      .then(hook())
+      .then(r => {Hook(r)})
       .catch(error => console.log(error))
     }
   }
