@@ -1,7 +1,7 @@
 $font-primary:'Raleway', sans-serif;
 @mixin flex-center {
   display: flex;
-  justify-content: space-evenly;
+  justify-content:center;
   align-items: center;
   flex-direction: column;
 }
@@ -13,7 +13,7 @@ body{
 }
 
 #container-app{
-  @include flex-center();
+  display: block;
   width: 800px;
   height: 100vh;
   margin: auto;
