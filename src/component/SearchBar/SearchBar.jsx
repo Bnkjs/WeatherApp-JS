@@ -1,10 +1,11 @@
 import { Input } from '../../elements/Input/Input';
 import { Button } from '../../elements/Button/Buton'
 
-export const SearchBar = ({input, onChangeInput}) =>{
+export const SearchBar = (props) =>{
+ 
   return(<div id='searchBar'>
-     <Input input={input} onChangeInput={onChangeInput}/>
-     <Button/>
+     <Input input={props.hook} onChangeInput={props.setHook}/>
+     <Button onClick={props.handleSearch}/>
   </div>)
 }
 
