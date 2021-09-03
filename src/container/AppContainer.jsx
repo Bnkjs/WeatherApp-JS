@@ -2,6 +2,7 @@ import './AppContainer.scss';
 import { Navbar } from 'component/NavBar/NavBar';
 import { Header } from 'component/Header/Header';
 import { WeatherResult } from 'component/WeatherResult/WeatherResult';
+import { useState, useEffect } from "react";
 
 export const App =() =>{
   const [input, setInput] = useState('paris')
