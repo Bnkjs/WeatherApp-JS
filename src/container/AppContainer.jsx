@@ -8,18 +8,28 @@ import { useState, useEffect } from "react";
 export const App =() =>{
   const [input, setInput] = useState("")
   const onChangeInput = (e) => setInput(e.target.value)
-  const [datas, setDatas] = useState("")
+  const [datas, setDatas] = useState([])
+  const [render, setRender] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
   
-  function handleSearch(e){
-    input === ""? e.preventDefault():
-    ApiFetch.CurrentWeather(input,process.env.REACT_APP_APIKEY,setDatas) 
+  async function handleSearch(e){
+    input === "" ? e.preventDefault():
+    setIsLoading(true)
+      await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&units=metric&appid=${process.env.REACT_APP_APIKEY}`)
+      .then(r => r.json())
+      .then(r => {if(r.cod === 200){
+        setDatas(r)
+        setIsLoading(false)
+      }})
+      .catch(error => console.log(error))
   }
 
   useEffect(()=>{
-    console.log(datas.main.temp);
+    console.log(isLoading);
+    setRender(datas.main)
   },[datas])
 
-  return(
+  return( 
       <div id="container-app">
        <Navbar/>
        <Header 
@@ -27,7 +37,10 @@ export const App =() =>{
         setHook={onChangeInput}
         handleSearch={handleSearch} 
        />
-       <WeatherResult city={datas.name} temp={Math.ceil(datas.main.temp)}/>
+       {
+         render &&
+         <WeatherResult  loading={isLoading} city={datas.name} temp={Math.ceil(render.temp)}/>
+       }
       </div>
   )
 }
