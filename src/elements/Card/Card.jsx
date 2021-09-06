@@ -1,7 +1,9 @@
 import React from 'react';
+import 'elements/Card/Card.scss';
 export const Card = (props) =>{
 
-return (<>
-  {props.children}
-</>)
+return (
+  <div id="card-container">
+    {props.children}
+  </div>)
 }
