@@ -2,32 +2,36 @@ import './AppContainer.scss';
 import { Navbar } from 'component/NavBar/NavBar';
 import { Header } from 'component/Header/Header';
 import { WeatherResult } from 'component/WeatherResult/WeatherResult';
-import ApiFetch from 'services/ApiFetch';
-import { useState, useEffect } from "react";
+import { Card } from 'elements/Card/Card';
+import { MoonLoader } from 'react-spinners';
+import { useState, useEffect, useRef } from "react";
+import { Preview } from 'component/Preview/Preview';
 
 export const App =() =>{
   const [input, setInput] = useState("")
   const onChangeInput = (e) => setInput(e.target.value)
-  const [datas, setDatas] = useState([])
-  const [render, setRender] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
-  
+  const [datasTemp, setDatasTemp] = useState([])
+  const [datas, setDatas] = useState("")
+  const [isLoading, setIsLoading] = useState(undefined)
+
   async function handleSearch(e){
     input === "" ? e.preventDefault():
     setIsLoading(true)
       await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&units=metric&appid=${process.env.REACT_APP_APIKEY}`)
       .then(r => r.json())
       .then(r => {if(r.cod === 200){
+        setIsLoading(false)
+        setDatasTemp(r.main.temp)
         setDatas(r)
         setIsLoading(false)
       }})
-      .catch(error => console.log(error))
+      .catch(error => console.log(error))     
   }
 
   useEffect(()=>{
-    console.log(isLoading);
-    setRender(datas.main)
+  
   },[datas])
+  console.log(datas);
 
   return( 
       <div id="container-app">
@@ -37,10 +41,13 @@ export const App =() =>{
         setHook={onChangeInput}
         handleSearch={handleSearch} 
        />
-       {
-         render &&
-         <WeatherResult  loading={isLoading} city={datas.name} temp={Math.ceil(render.temp)}/>
-       }
-      </div>
+      {  datas.cod? 
+      <Card>
+        <WeatherResult city={datas.name} temp={Math.ceil(datasTemp)}/>
+      </Card> 
+      : 
+      <Card><Preview/></Card>
+      }
+     </div>
   )
 }
