@@ -3,16 +3,16 @@ import { Navbar } from 'component/NavBar/NavBar';
 import { Header } from 'component/Header/Header';
 import { WeatherResult } from 'component/WeatherResult/WeatherResult';
 import { Card } from 'elements/Card/Card';
-import { RotateLoader, MoonLoader } from 'react-spinners';
-import { useState, useEffect } from "react";
+import { MoonLoader } from 'react-spinners';
+import { useState, useEffect, useRef } from "react";
+import { Preview } from 'component/Preview/Preview';
 
 export const App =() =>{
   const [input, setInput] = useState("")
   const onChangeInput = (e) => setInput(e.target.value)
-  const [datas, setDatas] = useState([])
-  const [render, setRender] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
-  let cardContent = "salut"
+  const [datasTemp, setDatasTemp] = useState([])
+  const [datas, setDatas] = useState("")
+  const [isLoading, setIsLoading] = useState(undefined)
 
   async function handleSearch(e){
     input === "" ? e.preventDefault():
@@ -21,17 +21,17 @@ export const App =() =>{
       .then(r => r.json())
       .then(r => {if(r.cod === 200){
         setIsLoading(false)
+        setDatasTemp(r.main.temp)
         setDatas(r)
+        setIsLoading(false)
       }})
-      .catch(error => console.log(error))
+      .catch(error => console.log(error))     
   }
 
   useEffect(()=>{
-    setRender(datas.main)
-    console.log(isLoading);
-    
+  
   },[datas])
-  console.log(cardContent);
+  console.log(datas);
 
   return( 
       <div id="container-app">
@@ -41,13 +41,13 @@ export const App =() =>{
         setHook={onChangeInput}
         handleSearch={handleSearch} 
        />
-       {
-         isLoading?
-          <Card>{cardContent=<MoonLoader/>}</Card> : 
-          <Card>
-            {cardContent=<WeatherResult loading={isLoading} city={datas.name} temp={Math.ceil(render.temp)}/>
-        } </Card>
-       }
-      </div>
+      {  datas.cod? 
+      <Card>
+        <WeatherResult city={datas.name} temp={Math.ceil(datasTemp)}/>
+      </Card> 
+      : 
+      <Card><Preview/></Card>
+      }
+     </div>
   )
 }
