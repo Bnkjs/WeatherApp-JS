@@ -2,7 +2,8 @@ import './AppContainer.scss';
 import { Navbar } from 'component/NavBar/NavBar';
 import { Header } from 'component/Header/Header';
 import { WeatherResult } from 'component/WeatherResult/WeatherResult';
-import ApiFetch from 'services/ApiFetch';
+import { Card } from 'elements/Card/Card';
+import { MoonLoader } from 'react-spinners';
 import { useState, useEffect } from "react";
 
 export const App =() =>{
@@ -11,7 +12,7 @@ export const App =() =>{
   const [datas, setDatas] = useState([])
   const [render, setRender] = useState("")
   const [isLoading, setIsLoading] = useState(false)
-  
+  const cardContent = null
   async function handleSearch(e){
     input === "" ? e.preventDefault():
     setIsLoading(true)
@@ -25,8 +26,13 @@ export const App =() =>{
   }
 
   useEffect(()=>{
-    console.log(isLoading);
     setRender(datas.main)
+    if(isLoading){
+      cardContent=<MoonLoader/> 
+    } else {
+      cardContent=<WeatherResult/>
+    }
+    
   },[datas])
 
   return( 
@@ -39,7 +45,9 @@ export const App =() =>{
        />
        {
          render &&
-         <WeatherResult  loading={isLoading} city={datas.name} temp={Math.ceil(render.temp)}/>
+          <Card>
+            {cardContent}
+          </Card>
        }
       </div>
   )
