@@ -29,11 +29,11 @@ export const App =() =>{
   useEffect(()=>{
   
   },[datas])
-  console.log(datas);
+  console.log(datas.weather);
 
   return( 
       <div id="container-app">
-       <Navbar/>
+       <Navbar desc={desc}/>
        <Header 
         hook={input} 
         setHook={onChangeInput}
