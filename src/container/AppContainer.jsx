@@ -12,18 +12,16 @@ export const App =() =>{
   const onChangeInput = (e) => setInput(e.target.value)
   const [datasTemp, setDatasTemp] = useState([])
   const [datas, setDatas] = useState("")
-  const [isLoading, setIsLoading] = useState(undefined)
+  const [desc, setDesc] = useState([])
 
   async function handleSearch(e){
     input === "" ? e.preventDefault():
-    setIsLoading(true)
       await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&units=metric&appid=${process.env.REACT_APP_APIKEY}`)
       .then(r => r.json())
       .then(r => {if(r.cod === 200){
-        setIsLoading(false)
         setDatasTemp(r.main.temp)
         setDatas(r)
-        setIsLoading(false)
+        setDesc(r.weather[0].description)
       }})
       .catch(error => console.log(error))     
   }
@@ -43,7 +41,7 @@ export const App =() =>{
        />
       {  datas.cod? 
       <Card>
-        <WeatherResult city={datas.name} temp={Math.ceil(datasTemp)}/>
+        <WeatherResult city={datas.name} temp={Math.ceil(datasTemp)} desc={desc}/>
       </Card> 
       : 
       <Card><Preview/></Card>

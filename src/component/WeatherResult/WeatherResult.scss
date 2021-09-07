@@ -11,11 +11,12 @@
   align-items: center;
 }
 #result-container{
-  background-color: plum;
   @include flex-center();
-  width: 100%;
+  width: 80%;
   height: 100%;
   opacity: 0;
+  border-radius: 0.8em;
+  background-color: #f0f4fc;
   .weather-card{
     width: 15.70vw;
     height: 28.73vh;
