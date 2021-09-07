@@ -7,10 +7,12 @@
   background-color: #6A68F7;
   color: #fff;
   font-weight: bold;
-  transition: all 100ms ease-in;
+  transition: all 100ms ease-out;
   &:hover{
     background-color:#5a58e8 ;
     color:#fff;
+    transform: translateY(-1px);
+    box-shadow: 2px 3px 3px rgb(216, 216, 216);
   }
   &:active{
     transform: scale(1.1);
