@@ -1,5 +1,5 @@
 import React,{ useRef, useEffect } from 'react';
-import WeatherSvg from "elements/Icon/weather.svg";
+import Calendar from "elements/Icon/calendar.svg";
 import { gsap, Power3 } from 'gsap';
 import 'component/Preview/Preview.scss';
 export const Preview = () => {
@@ -18,7 +18,7 @@ export const Preview = () => {
   },[])
   return(
     <div ref={it => itemRef = it} id="preview-container">
-      <img className='preview-illus' src={WeatherSvg} alt="illsutration" />
+      <img className='preview-illus' src={Calendar} alt="illsutration" />
     </div>
   )
 }
