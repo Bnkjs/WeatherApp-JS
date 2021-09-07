@@ -9,6 +9,7 @@ export const Input = (props) =>{
         className='search-input' 
         onChange={props.onChangeInput}
         value={props.input}
+        autoComplete="off"
        />
      </form>
     </>)
