@@ -1,9 +1,14 @@
+$font-primary:'Raleway', sans-serif;
+
 form{
   .search-input{
     height: 2.50em;
-    width: 16.5em;
+    width: 16em;
     outline: none;
     border: none;
-    border-radius: 0.42em;
+    border-bottom: 1px solid rgb(203, 203, 203);
+    background: none;
+    font-family: $font-primary;
+    font-size: 0.9em;
   }
 }
