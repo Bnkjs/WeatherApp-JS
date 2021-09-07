@@ -1,0 +1,13 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#icon-container{
+  width: 30%;
+  @include flex-center();
+  margin-right: 5%;
+  img{
+    width: 80%;
+  }
+}
