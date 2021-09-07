@@ -22,13 +22,14 @@ export const App =() =>{
     }else{
       await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&units=metric&appid=${process.env.REACT_APP_APIKEY}`)
       .then(r => r.json())
-      .then(r => {if(r.cod === 200){
+      .then(r => { if(r.cod === '404'){
+        NotyfWrong()
+        e.preventDefault()
+        setError(r.cod)
+      } else if(r.cod === 200){
         setDatasTemp(r.main.temp)
         setDatas(r)
         setDesc(r.weather[0].description)
-      } else{
-         setError(r.cod)
-         NotyfWrong()
       }
     })
       .catch(error => setError(error))   
@@ -37,7 +38,7 @@ export const App =() =>{
   }
 
   useEffect(()=>{
-  },[datas])
+  },[datas,error])
 
   return( 
       <div id="container-app">
