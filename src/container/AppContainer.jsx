@@ -39,10 +39,9 @@ export const App =() =>{
   useEffect(()=>{
   },[datas])
 
-
   return( 
       <div id="container-app">
-       <Navbar/>
+       <Navbar desc={desc}/>
        <Header 
         hook={input} 
         setHook={onChangeInput}

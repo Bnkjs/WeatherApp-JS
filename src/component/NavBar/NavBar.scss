@@ -11,16 +11,18 @@ nav{
   left: 0;
   right: 0;
   top: 0;
+  transition: all 550ms ease-out;
   @include flex-center();
   ul{
     margin: 0;
     padding: 0;
-    width: 100%;
+    width: 5%;
     @include flex-center();
     margin-left: 5%;
   }
   li{
     list-style: none;
     font-family: $font-Bold;
+    margin-left: 5%;
   }
 }
